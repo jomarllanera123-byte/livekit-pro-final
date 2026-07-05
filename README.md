@@ -1,28 +1,45 @@
-# Streaming Live Pro
+# Streaming LiveKit Pro Final
 
-Plataforma privada de streaming con login Google, admin único, chat en vivo, pantalla compartida como video principal y cámara flotante encima.
+Plataforma privada de streaming con Google Login, LiveKit, chat y panel de administrador.
 
-## Instalación
+## Iniciar en local
 
-```bash
+```cmd
 npm install
-cp .env.example .env
-npm run dev
+copy .env.example .env
+npm start
 ```
 
-## Producción Railway
+Abre: http://localhost:3000/login
 
-Configura variables:
+## Variables necesarias
 
 ```env
-APP_URL=https://tu-dominio.up.railway.app
-SESSION_SECRET=secreto_largo
-GOOGLE_CLIENT_ID=xxxxx
-GOOGLE_CLIENT_SECRET=xxxxx
+APP_URL=http://localhost:3000
+SESSION_SECRET=clave-larga
 ADMIN_EMAIL=tu_correo@gmail.com
+GOOGLE_CLIENT_ID=...
+GOOGLE_CLIENT_SECRET=...
+LIVEKIT_URL=wss://tu-proyecto.livekit.cloud
+LIVEKIT_API_KEY=...
+LIVEKIT_API_SECRET=...
+LIVEKIT_ROOM=ochoa-live
 ```
 
-En Google Cloud agrega:
+## Google OAuth local
 
-- Origin: `https://tu-dominio.up.railway.app`
-- Redirect URI: `https://tu-dominio.up.railway.app/auth/google/callback`
+Authorized JavaScript origins:
+
+```txt
+http://localhost:3000
+```
+
+Authorized redirect URIs:
+
+```txt
+http://localhost:3000/auth/google/callback
+```
+
+## Railway
+
+En Railway agrega las mismas variables, pero cambia APP_URL por la URL pública de Railway.
